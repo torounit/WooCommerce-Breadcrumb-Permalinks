@@ -21,9 +21,12 @@ class WCBP_Test extends WP_UnitTestCase {
 
 	}
 
+	public function test_woo_loaded() {
+
+		$this->assertTrue( class_exists('WooCommerce') );
+	}
 
 	public function test_post_type_link() {
-		global $wp_rewrite;
 		$id = $this->factory->post->create( array( 'post_type' => 'product') );
 		$term_id = $this->factory->term->create( array('taxonomy' => 'product_cat') );
 		wp_set_object_terms($id, $term_id, 'product_cat');
